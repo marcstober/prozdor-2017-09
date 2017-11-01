@@ -1,7 +1,7 @@
 <html>
     <h1>Hello, World!</h1>
  
-    <input id="nameInput">
+    <input id="wordInput">
 
     <button id="goButton">Go</button>
 
@@ -14,15 +14,25 @@
 
 <script>
 
-    var name = $("#nameInput").val();
+    $(function() {
+        $("#goButton").click(
+        function() {
+            var name = $("#wordInput").val();
 
-    $("#goButton").click(
-        () => {
-            
-            alert('clicked');
+            $("#myParagrap").text("Loading...");
+        
+            $.get('https://www.sefaria.org/api/texts/' + name, function(data) {
+                $("#myParagrap").text(data.text[0]);
+            }, 'jsonp').fail(function(error) {
+                alert('there was a problem, sorry!');
+            });
+
+            // alert('clicked');
            
-$("#myParagrap").text(name);
+    });
 
+   
+   
         }
 
 

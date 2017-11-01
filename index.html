@@ -1,0 +1,34 @@
+<html>
+    <h1>Hello, World!</h1>
+ 
+    <input id="nameInput">
+
+    <button id="goButton">Go</button>
+
+    <p id="myParagrap"></p>
+
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
+<script>
+
+    var name = $("#nameInput").val();
+
+    $("#goButton").click(
+        () => {
+            
+            alert('clicked');
+           
+$("#myParagrap").text(name);
+
+        }
+
+
+    );
+
+        // var name = 
+
+    </script>
+</html>

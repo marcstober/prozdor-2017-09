@@ -22,7 +22,19 @@
             $("#myParagrap").text("Loading...");
         
             $.get('https://www.sefaria.org/api/texts/' + name, function(data) {
-                $("#myParagrap").text(data.text[0]);
+
+                var text = "";
+
+                for(var i=0; i < 31; i++) {
+                    console.log(i);
+                    text = text + data.text[i];
+                }
+
+                // alert(data.text.length);
+
+                $("#myParagrap").text(text);
+
+
             }, 'jsonp').fail(function(error) {
                 alert('there was a problem, sorry!');
             });

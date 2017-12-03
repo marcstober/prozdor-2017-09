@@ -5,7 +5,7 @@
 
     <button id="goButton">Go</button>
 
-    <p id="myParagrap"></p>
+    <div id="myParagrap"></div>
 
     <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -27,12 +27,13 @@
 
                 for(var i=0; i < 31; i++) {
                     console.log(i);
-                    text = text + data.text[i];
+                    // text = text + data.text[i];
+                    $("#myParagrap").append("<p>" + data.text[i] + "</p>");
                 }
 
                 // alert(data.text.length);
 
-                $("#myParagrap").text(text);
+                // ?$("#myParagrap").text(text);
 
 
             }, 'jsonp').fail(function(error) {

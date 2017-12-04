@@ -25,17 +25,13 @@
 
                 var text = "";
 
+                $("#myParagrap").text("");
+
                 for(var i=0; i < 31; i++) {
                     console.log(i);
                     // text = text + data.text[i];
                     $("#myParagrap").append("<p>" + data.text[i] + "</p>");
                 }
-
-                // alert(data.text.length);
-
-                // ?$("#myParagrap").text(text);
-
-
             }, 'jsonp').fail(function(error) {
                 alert('there was a problem, sorry!');
             });

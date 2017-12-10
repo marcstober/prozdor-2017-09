@@ -1,53 +1,84 @@
 <html>
-    <h1>Hello, World!</h1>
- 
-    <input id="wordInput">
+<h1>Remove Vowels/Trope!</h1>
+
+<!-- <input id="wordInput">
 
     <button id="goButton">Go</button>
 
-    <div id="myParagrap"></div>
+    <div id="myParagrap"></div> -->
 
-    <script
-    src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
+
+<div>
+    <textarea id="originalText">
+
+        </textarea>
+
+    <input type="checkbox">Vowels
+    <input type="checkbox">Trope
+    <button id="removeButton">Remove</button>
+
+</div>
 
 <script>
 
-    $(function() {
-        $("#goButton").click(
-        function() {
-            var name = $("#wordInput").val();
+    function isItAVowel(character) {
+        if (character === 'a' ||
+            character === 'e' ||
+            character === 'i' ||
+            character === 'o' ||
+            character === 'u'
+        ) {
+            return 'yes';
+        };
+    }
 
-            $("#myParagrap").text("Loading...");
-        
-            $.get('https://www.sefaria.org/api/texts/' + name, function(data) {
-
-                var text = "";
-
-                $("#myParagrap").text("");
-
-                for(var i=0; i < 31; i++) {
-                    console.log(i);
-                    // text = text + data.text[i];
-                    $("#myParagrap").append("<p>" + data.text[i] + "</p>");
-                }
-            }, 'jsonp').fail(function(error) {
-                alert('there was a problem, sorry!');
-            });
-
-            // alert('clicked');
-           
-    });
-
-   
-   
+    function loopOverCharacters(text) {
+        for (var i = 0; i < text.length; i++) { // <-- fixed bug here
+            alert(isItAVowel(text[i]));
         }
+    }
+
+    $(function () {
+
+        $("#removeButton").click(
+            function () {
+                var originalText = $('#originalText').val();
+                // console.log(originalText);
+                loopOverCharacters(originalText);
+            }
+        );
+
+        $("#goButton").click(
+            function () {
+                var name = $("#wordInput").val();
+
+                $("#myParagrap").text("Loading...");
+
+                $.get('https://www.sefaria.org/api/texts/' + name, function (data) {
+
+                    var text = "";
+
+                    $("#myParagrap").text("");
+
+                    for (var i = 0; i < 31; i++) {
+                        console.log(i);
+                        // text = text + data.text[i];
+                        $("#myParagrap").append("<p>" + data.text[i] + "</p>");
+                    }
+                }, 'jsonp').fail(function (error) {
+                    alert('there was a problem, sorry!');
+                });
+
+                // alert('clicked');
+
+            });
+    }
 
 
     );
 
-        // var name = 
+</script>
 
-    </script>
 </html>
